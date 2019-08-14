@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom';
 
-class UserCard extends Component {
+class Nav extends Component {
 
     render( ) {
 
@@ -30,4 +30,4 @@ class UserCard extends Component {
 
 }
 
-export default UserCard
+export default Nav

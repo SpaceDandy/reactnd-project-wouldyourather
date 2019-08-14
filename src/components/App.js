@@ -1,6 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../logo.svg';
+import '../App.css';
+import LoadingBar from 'react-redux-loading';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import Nav from './Nav';
 
 function App() {
   return (
