@@ -1,29 +1,27 @@
-import React from 'react';
+import React, { Component, Fragment } from 'react';
 import logo from '../logo.svg';
 import '../App.css';
 import LoadingBar from 'react-redux-loading';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Nav from './Nav';
+import Dashboard from './Dashboard';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  render() {
+    return (
+      <Router>
+
+
+        <Route path="/" Component={Dashboard} />
+        <Route path="/leadboard" Component={Leaderboard} />
+        <Route path="/new" Component={NewQuestion} />
+        <Route path="/question/:qid" Component={Question} />
+      </Router>
+
+    )
+  }
+
 }
 
 export default App;

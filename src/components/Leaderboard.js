@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class UserCard extends Component {
+class Leaderboard extends Component {
 
     render( ) {
 
@@ -13,4 +13,4 @@ class UserCard extends Component {
 
 }
 
-export default UserCard
+export default Leaderboard
