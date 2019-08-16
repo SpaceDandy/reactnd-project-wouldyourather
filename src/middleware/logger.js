@@ -5,7 +5,7 @@ const logger = (store) => (next) => (action) => {
         console.log()
         const returnValue = next(action)
         console.log('New Store State:', store.getState())
-    console.group(action.type)
+    console.groupEnd()
     return returnValue
 }
 

@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 
-class QuestionResults extends Component {
+class QuestionPreview extends Component {
 
     render( ) {
 
         return (
             <div>
-                Results BITCH
+                Preview HYPE
             </div>
         )
     }
 
 }
 
-export default QuestionResults
+export default QuestionPreview

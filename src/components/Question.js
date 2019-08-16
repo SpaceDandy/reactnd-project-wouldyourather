@@ -6,7 +6,7 @@ class Question extends Component {
 
         return (
             <div>
-
+                Question HYPE
             </div>
         )
     }

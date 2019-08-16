@@ -1,16 +1,16 @@
 import React, { Component } from 'react'
 
-class QuestionResults extends Component {
+class Question extends Component {
 
     render( ) {
 
         return (
             <div>
-                Results BITCH
+
             </div>
         )
     }
 
 }
 
-export default QuestionResults
+export default Question
