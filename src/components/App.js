@@ -5,15 +5,15 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Nav from './Nav';
 import Dashboard from './Dashboard';
 import Leaderboard from './Leaderboard';
-import Question from './Question';
-import NewQuestion from './NewQuestion.js';
+import QuestionPage from './QuestionPage';
+import NewQuestion from './NewQuestion';
 import { connect } from 'react-redux';
 import { loadData } from '../actions/shared'
 
 class App extends Component {
 
   componentDidMount(){
-    this.props.dispatch(loadData())
+     this.props.dispatch(loadData())
   }
 
   render() {
@@ -27,13 +27,11 @@ class App extends Component {
               <Route exact path="/" component={Dashboard} />
               <Route exact path="/leadboard" component={Leaderboard} />
               <Route exact path="/new" component={NewQuestion} />
-              <Route path="/question/:qid" component={Question} />
+              <Route exact path="/question/:qid" component={QuestionPage} />
             </div>
           </div>
         </Fragment>
       </Router>
-
-
     )
   }
 

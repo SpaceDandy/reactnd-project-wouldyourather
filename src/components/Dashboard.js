@@ -18,10 +18,6 @@ class Dashboard extends Component {
         const { userAnswered, userUnanswered } = this.props;
         const authedUser = AUTHED_USER
 
-        console.log("ALL QUESTIONS")
-        console.log(userAnswered)
-        console.log(userUnanswered)
-
         return (
             <div>
                 <Tabs>
@@ -42,12 +38,11 @@ class Dashboard extends Component {
                         </ul>
                     </TabPanel>
                     <TabPanel>
-                        
-                    <ul>
+                        <ul>
                             {userUnanswered.map((qid) => {
                                 return (
                                     <li key={qid}>
-                                        <UserCard qid={qid} type={PREVIEW_CARD}  />
+                                        <UserCard qid={qid} type={PREVIEW_CARD} />
                                     </li>
                                 )
                             })}
@@ -61,11 +56,12 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps({ authedUser, questions }) {
-    
+
     const userAnswered = []
     const userUnanswered = []
     Object.entries(questions).map(([qid, question]) => {
-        question.option1Answers.includes(authedUser) 
+        (question.optionOne.votes.includes(authedUser) ||
+            question.optionTwo.votes.includes(authedUser))
             ? userAnswered.push(qid) : userUnanswered.push(qid)
     })
 
@@ -75,8 +71,9 @@ function mapStateToProps({ authedUser, questions }) {
         authedUser,
     }
 }
+
 Dashboard.defaultProps = {
-    
+
 }
 Dashboard.propTypes = {
 

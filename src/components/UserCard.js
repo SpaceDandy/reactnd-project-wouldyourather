@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import Question from './NewQuestion';
+import QuestionSelect from './QuestionSelect';
 import QuestionResults from './QuestionResults';
 import QuestionPreview from './QuestionPreview';
 export const UNANSWERED_CARD = "UNANSWERED_CARD"
@@ -8,10 +7,11 @@ export const ANSWERED_CARD = "ANSWERED_CARD"
 export const PREVIEW_CARD = "PREVIEW_CARD"
 
 class UserCard extends Component {
-    whichType = () => ({
-         UNANSWERED_CARD : <Question />,
-         ANSWERED_CARD : <QuestionResults />,
-         PREVIEW_CARD : <QuestionPreview />
+    
+    whichType = (qid) => ({
+         UNANSWERED_CARD : <QuestionSelect qid={qid} />,
+         ANSWERED_CARD : <QuestionResults qid={qid}/>,
+         PREVIEW_CARD : <QuestionPreview qid={qid} />
          })
                 
     render() {
@@ -19,10 +19,9 @@ class UserCard extends Component {
 
         return (
             <div>
-                {this.whichType()[type]}
+                {this.whichType(qid)[type]}
             </div>
         )
-
     }
 }
 
@@ -34,10 +33,4 @@ UserCard.propTypes = {
 
 }
 
-function mapStateToProps({ }, { qid, type }) {
-    return {
-        qid: qid,
-        type: type,
-    }
-}
-export default connect(mapStateToProps)(UserCard)
+export default UserCard
