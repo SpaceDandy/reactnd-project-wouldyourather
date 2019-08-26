@@ -56,8 +56,6 @@ class QuestionSelect extends Component {
         const { question } = this.props
         return (
             <Fragment>
-                <LoadingBar />
-
                 {question === undefined ? <div>'Not a real question'</div> :
                     <div>
                         <FormControl component="fieldset">
@@ -92,10 +90,10 @@ class QuestionSelect extends Component {
 
 function mapStateToProps({ questions, authedUser }, { qid }) {
     const question = questions[qid]
+
     return ({
         question,
         authedUser,
-        loading: question === undefined
     })
 }
 
