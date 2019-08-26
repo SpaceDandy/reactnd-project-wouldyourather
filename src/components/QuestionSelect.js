@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import LoadingBar from 'react-redux-loading'
 import { Link } from 'react-router-dom'
 import { addAnswer, resetAnswer } from '../actions/questions'
+import { addAnswerToUser } from '../actions/users' 
 import { _saveQuestionAnswer } from '../_DATA'
 import Button from '@material-ui/core/Button';
 import Radio from '@material-ui/core/Radio';
@@ -37,7 +38,7 @@ class QuestionSelect extends Component {
         e.preventDefault()
         const optionKey = (this.state.value === "1") ? "optionOne" : "optionTwo"
         this.props.dispatch(addAnswer(this.props.question.id, optionKey, this.props.authedUser))
-        console.log(this.props.authedUser)
+        this.props.dispatch(addAnswerToUser(this.props.authedUser, this.props.question.id, optionKey))
         const bs = {
             qid : this.props.question.id,
             answer : optionKey,
@@ -60,7 +61,7 @@ class QuestionSelect extends Component {
                 {question === undefined ? <div>'Not a real question'</div> :
                     <div>
                         <FormControl component="fieldset">
-                            <FormLabel component="legend">Would you rather</FormLabel>
+                            <FormLabel component="legend">Would you rather...</FormLabel>
                             <RadioGroup aria-label="position" name="position" value={this.state.value}
                                 onChange={this.handleChange} col="True">
                                 <FormControlLabel

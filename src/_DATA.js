@@ -131,7 +131,7 @@ export function _getQuestions() {
   })
 }
 
-function formatQuestion({ optionOneText, optionTwoText, author }) {
+export function formatQuestion({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
@@ -150,8 +150,7 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 export function _saveQuestion(question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
-    const formattedQuestion = formatQuestion(question)
-
+    const formattedQuestion = question
     setTimeout(() => {
       questions = {
         ...questions,
@@ -171,7 +170,7 @@ export function _saveQuestion(question) {
   })
 }
 
-export function _saveQuestionAnswer({ authedUser = "tylermcginnis", qid, answer }) {
+export function _saveQuestionAnswer({ authedUser, qid, answer }) {
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {

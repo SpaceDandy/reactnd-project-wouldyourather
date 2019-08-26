@@ -24,9 +24,6 @@ const useStyles = makeStyles(theme => ({
     margin: {
         margin: theme.spacing(10),
     },
-    fucked: {
-        margin: theme.spacing(2),
-    },
     padding: {
         padding: theme.spacing(0, 2),
     },
@@ -35,7 +32,6 @@ const useStyles = makeStyles(theme => ({
 function QuestionResults(props) {
     const classes = useStyles();
     const { authedUser, question } = props
-    console.log(question)
     const optOneVotes = question.optionOne.votes.length
     const optTwoVotes = question.optionTwo.votes.length
     const votedFor = question.optionTwo.votes.includes(authedUser)
@@ -48,7 +44,7 @@ function QuestionResults(props) {
             <div className={classes.root}>
                 <h3>Results:</h3>
                 <LoadingBar />
-                {question.optionOne.text}
+                {question.optionOne.text} { votedFor === 'optionOne' ? <b>(You voted for)</b> : "" }
                 <BorderLinearProgress
                     className={classes.margin}
                     variant="determinate"
@@ -57,7 +53,7 @@ function QuestionResults(props) {
                 />
                 {optOneVotes} of {optTwoVotes + optTwoVotes} <br />
                 <br />
-                {question.optionTwo.text}
+                {question.optionTwo.text} { votedFor === 'optionTwo' ? <b>(You voted for)</b> : "" }
 
                 <BorderLinearProgress
                     className={classes.margin}

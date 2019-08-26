@@ -7,7 +7,6 @@ import { getDataFromBackend } from '../utils/getData'
 
 
 
-const authedUserId = "tylermcginnis"
 
 export function loadData() {
     return (dispatch) => {
@@ -15,7 +14,6 @@ export function loadData() {
             .then( (usersAndQuestions) => {
                 dispatch(loadQuestions(usersAndQuestions.questions))
                 dispatch(loadUsers(usersAndQuestions.users))
-                dispatch(setAuthedUser(authedUserId))
             })       
     }
 }

@@ -2,6 +2,7 @@ export const LOAD_QUESTIONS = "LOAD_QUESTIONS"
 export const ADD_QUESTION = "ADD_QUESTION"
 export const ADD_ANSWER = "ADD_ANSWER"
 export const RESET_ANSWER = "RESET_ANSWER"
+export const REMOVE_QUESTION = "REMOVE_QUESTION"
 
 export function resetAnswer( qid, optionKey, uid ){
     return {
@@ -11,6 +12,7 @@ export function resetAnswer( qid, optionKey, uid ){
         uid,
     }
 }
+
 export function addAnswer(qid, optionKey, uid){
     return {
         type : ADD_ANSWER,
@@ -29,6 +31,13 @@ export function loadQuestions(questions) {
 export function addQuestion(question) {
     return {
         type: ADD_QUESTION,
+        question
+    }
+}
+
+export function removeQuestion(question) {
+    return {
+        type: REMOVE_QUESTION,
         question
     }
 }

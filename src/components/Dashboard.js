@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import '../index.css';
 import PropTypes from 'prop-types';
 import UserCard, { UNANSWERED_CARD, ANSWERED_CARD, PREVIEW_CARD }
     from './UserCard';
 
-const AUTHED_USER = "sarahedo"
+
 
 class Dashboard extends Component {
     constructor() {
@@ -15,8 +16,9 @@ class Dashboard extends Component {
     }
 
     render() {
-        const { userAnswered, userUnanswered } = this.props;
-        const authedUser = AUTHED_USER
+        const { userAnswered, userUnanswered,
+            authedUser, users } = this.props;
+
 
         return (
             <div>
@@ -26,11 +28,10 @@ class Dashboard extends Component {
                         <Tab>UnAnswered</Tab>
                     </TabList>
                     <TabPanel>
-                        fuck
-                    <ul>
+                        <ul>
                             {userAnswered.map((qid, answer) => {
                                 return (
-                                    <li>
+                                    <li key={qid}>
                                         <UserCard qid={qid} type={PREVIEW_CARD} />
                                     </li>
                                 )
@@ -49,26 +50,35 @@ class Dashboard extends Component {
                         </ul>
                     </TabPanel>
                 </Tabs>
+
             </div>
         )
     }
 
 }
 
-function mapStateToProps({ authedUser, questions }) {
+function mapStateToProps({ authedUser, questions, users }) {
 
-    const userAnswered = []
-    const userUnanswered = []
+    let userAnswered = []
+    let userUnanswered = []
     Object.entries(questions).map(([qid, question]) => {
         (question.optionOne.votes.includes(authedUser) ||
             question.optionTwo.votes.includes(authedUser))
             ? userAnswered.push(qid) : userUnanswered.push(qid)
+    })
+    userAnswered = userAnswered.sort((a, b) => {
+        return questions[b].timestamp - questions[a].timestamp
+    })
+
+    userUnanswered = userUnanswered.sort((a, b) => {
+        return questions[b].timestamp - questions[a].timestamp
     })
 
     return {
         userAnswered,
         userUnanswered,
         authedUser,
+        users,
     }
 }
 
