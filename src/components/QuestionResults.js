@@ -51,7 +51,7 @@ function QuestionResults(props) {
                     color="secondary"
                     value={Math.round(optOnePerc * 100) / 100}
                 />
-                {optOneVotes} of {optTwoVotes + optTwoVotes} <br />
+                {optOneVotes} of {optOneVotes + optTwoVotes} <br />
                 <br />
                 {question.optionTwo.text} { votedFor === 'optionTwo' ? <b>(You voted for)</b> : "" }
 
@@ -62,7 +62,7 @@ function QuestionResults(props) {
                     value={Math.round(optTwoPerc * 100) / 100}
                 />
 
-                {optTwoVotes} of {optTwoVotes + optTwoVotes}
+                {optTwoVotes} of {optOneVotes + optTwoVotes}
             </div>
         </Fragment>
     );
