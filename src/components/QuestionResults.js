@@ -34,7 +34,7 @@ function QuestionResults(props) {
     const { authedUser, question } = props
     const optOneVotes = question.optionOne.votes.length
     const optTwoVotes = question.optionTwo.votes.length
-    const votedFor = question.optionTwo.votes.includes(authedUser)
+    const votedFor = question.optionOne.votes.includes(authedUser)
         ? "optionOne" : "optionTwo"
     const optOnePerc = (optOneVotes / (optOneVotes + optTwoVotes) * 100)
     const optTwoPerc = (optTwoVotes / (optOneVotes + optTwoVotes) * 100)
