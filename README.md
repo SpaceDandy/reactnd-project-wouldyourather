@@ -1,3 +1,20 @@
+## Would you rather app!
+
+This is a web app that allows you to ask your friends different variations of the question
+'Would you rather... '. 
+
+Users can submit questions, answer questions, view question statistics, and track their
+progress on a leaderboard!
+
+Sign in and begin the game!
+
+## Downloading the project
+Feel free to git clone the repo at https://github.com/SpaceDandy/reactnd-project-wouldyourather.git
+or download the zip.
+
+npm install for dependencies and npm start to run.
+
+## Installation
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -3,11 +3,8 @@ import { connect } from 'react-redux';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import '../index.css';
-import PropTypes from 'prop-types';
-import UserCard, { UNANSWERED_CARD, ANSWERED_CARD, PREVIEW_CARD }
+import UserCard, { PREVIEW_CARD }
     from './UserCard';
-
-
 
 class Dashboard extends Component {
     constructor() {
@@ -16,20 +13,19 @@ class Dashboard extends Component {
     }
 
     render() {
-        const { userAnswered, userUnanswered,
-            authedUser, users } = this.props;
-
+        const { userAnswered, userUnanswered } = this.props;
 
         return (
             <div>
                 <Tabs>
                     <TabList>
-                        <Tab>Answered</Tab>
                         <Tab>UnAnswered</Tab>
+                        <Tab>Answered</Tab>
                     </TabList>
+
                     <TabPanel>
                         <ul>
-                            {userAnswered.map((qid, answer) => {
+                            {userUnanswered.map((qid) => {
                                 return (
                                     <li key={qid}>
                                         <UserCard qid={qid} type={PREVIEW_CARD} />
@@ -40,7 +36,7 @@ class Dashboard extends Component {
                     </TabPanel>
                     <TabPanel>
                         <ul>
-                            {userUnanswered.map((qid) => {
+                            {userAnswered.map((qid, answer) => {
                                 return (
                                     <li key={qid}>
                                         <UserCard qid={qid} type={PREVIEW_CARD} />
